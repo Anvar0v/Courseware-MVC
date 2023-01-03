@@ -1,0 +1,134 @@
+﻿@model Courseware.Models.Task;
+
+<div style="display:flex;flex-direction:column;align-items:center;">
+    <div class="card card-1" style="display:flex;flex-direction:column;align-items:center;">
+        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <h3 class="card__title">Task: @Model.TaskName</h3>
+        <h5>Deadline: @Model.DeadlineOfTask</h5>
+    </div>
+</div>
+
+@{
+    var comments = @Model.Comments;
+    if(comments != null)
+    {
+        foreach (var comment in comments)
+        {
+            <h5>@comment.Comment</h5>
+            <h6>@comment.Children</h6>
+        }
+    }
+}
+
+@*https://www.salwangurugram.com/assets/frontend/img/syllabus-banner.jpg
+
+    //math class
+    https://marketplace.canva.com/EAEwa645XXQ/1/0/1600w/canva-purple-minimalist-math-class-classroom-banner-TMdys97XTio.jpg
+    https://media.slidesgo.com/storage/1678109/conversions/23-banners-for-middle-school-virtual-classroom-thumb.jpg*@
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .main-container {
+        padding: 30px;
+    }
+
+    /* HEADING */
+
+    .heading {
+        text-align: center;
+    }
+
+    .heading__title {
+        font-weight: 600;
+    }
+
+    .heading__credits {
+        margin: 10px 0px;
+        color: #888888;
+        font-size: 25px;
+        transition: all 0.5s;
+    }
+
+    .heading__link {
+        text-decoration: none;
+    }
+
+    .heading__credits .heading__link {
+        color: inherit;
+    }
+
+    /* CARDS */
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .card {
+        margin: 20px;
+        padding: 20px;
+        width: 70%;
+        min-height: 150px;
+        display: grid;
+        grid-template-rows: 20px 50px 1fr 50px;
+        border-radius: 10px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.2s;
+    }
+
+        .card:hover {
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+            transform: scale(1.01);
+        }
+
+    .card__link,
+    .card__exit,
+    .card__icon {
+        position: relative;
+        text-decoration: none;
+        color:black;
+    }
+
+        .card__link::after {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            content: "";
+            width: 0%;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transition: all 0.5s;
+        }
+
+        .card__link:hover::after {
+            width: 100%;
+        }
+
+    .card__icon {
+        grid-row: 2/3;
+        font-size: 30px;
+    }
+
+    .card__title {
+        grid-row: 3/4;
+        font-weight: 400;
+        color: black;
+    }
+
+    .card__apply {
+        grid-row: 4/5;
+        align-self: center;
+    }
+
+    /* CARD BACKGROUNDS */
+
+    .card-1 {
+        background: radial-gradient(#1fe4f5, #3fbafe);
+    }
+</style>

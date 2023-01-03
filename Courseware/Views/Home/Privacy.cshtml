@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h1 style="color:red;"> @Localizer["AccessDenied"].Value </h1>

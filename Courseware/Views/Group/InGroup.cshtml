@@ -1,0 +1,80 @@
+﻿@using Courseware.Data
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> _userManager
+@model Group
+
+@{
+    ViewData["Title"] = "Task Page";
+}
+
+
+<div class="taskDiv" style="margin: 5px;">
+    <div id="formDiv">
+        <form>
+            <input placeholder="Task Name" type="text" name="TaskName" class="btn btn-outline-secondary" required />
+            <input placeholder="Year" name="Year" class="btn btn-outline-secondary" type="number" required />
+            <input placeholder="Month" name="Month" class="btn btn-outline-secondary" type="number" required />
+            <input placeholder="Day" name="Day" class="btn btn-outline-secondary" type="number" required />
+            <input placeholder="Group Name" name="GroupName" class="btn btn-outline-secondary" type="text" required />
+            <input type="submit" asp-controller="Group" asp-action="AddNewTask" class="btn btn-primary" value="Submit" />
+        </form>
+    </div>
+</div>
+
+
+@{
+    if (Model.GroupName is not null)
+    {
+        <h3> @Model.GroupName</h3>
+    }
+}
+
+<table class="table table-striped table-bordered table-hover" style="max-width: 100%;">
+    @{
+        var tasks = Model.Tasks;
+
+        if (tasks is not null)
+        {
+            <thead>
+                <tr>
+                    <th> Tasks</th>
+                    <th> Deadline</th>
+                    <th>Delete</th>
+                    <th> Edit</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+
+            @foreach (var task in tasks)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @task.TaskName
+                        </td>
+
+                        <td class="text-right">
+                            @task.DeadlineOfTask
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-danger"
+                   asp-action="DeleteTaskById" asp-route-id=@task.Id asp-controller="Group">Delete</a>
+                        </td>
+                        <td><a class="btn btn-sm btn-warning"> Edit </a></td>
+                        <td>
+                            <a asp-controller="Group" asp-action="TaskDetails" asp-route-id="@task.Id"
+                            class="btn btn-sm btn-primary"> Details</a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            }
+        }
+    }
+</table>
+
+
+
+
+
+

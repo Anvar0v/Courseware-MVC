@@ -1,0 +1,53 @@
+﻿@using Courseware.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<Group>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-blue">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Courseware</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<a asp-controller="Group" asp-action="AddNewGroup" class="btn btn-primary btn-pill align-self-center mr-2">
+    @Localizer["OpenGroup"].Value
+</a>
+
+
+<a asp-action="JoinToGroup" asp-controller="Group" class="btn btn-primary btn-pill align-self-center mr-2">
+    @Localizer["JoinGroup"].Value
+</a>
+
+@{
+    /*if (Model is not null)
+    {
+        foreach (var group in Model)
+        {
+            var groupName = group.GroupName;
+            <a asp-action="JoinToGroup" asp-controller="Group">
+                <div class="container-group-card">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="group_card">
+                            <div class="overlay"></div>
+                            <div class="content">
+                                <h4>@group.GroupName</h4>
+                                <h6>3 Hrs | 12 Users</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+
+    }*/
+}

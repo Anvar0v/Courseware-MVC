@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<div class="loader-container">
+    <div class="spinner-box">
+        <div class="circle-border">
+            <div class="circle-core"></div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="inner-header flex">
+        <div>
+            <h1 style="font-size: 65px">Courseware.uz</h1>
+            <h5> @Localizer["Platform"].Value </h5>
+        </div>
+
+        <div class="registrationButtonsDiv">
+            <a id="signin" class="btn btn-outline-light btn-pill align-self-center mr-2" style="margin:15px; font-size:19px">
+                <i class="fas fa-sign-in"></i> @Localizer["SignIn"].Value
+            </a>
+
+            <a id="signup" class="btn btn-outline-light btn-pill align-self-center mr-2" style="font-size:18px">
+                <i class="fa-solid fa-user-plus"></i> @Localizer["SignUp"].Value
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+
+</div>
+
+@*This is modal for sign in action*@
+
+<div id="SignInModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form class="mx-1 mx-md-4" asp-controller="Account" asp-action="SignIn" method="post">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example4c">Name</label>
+                    <input type="text" id="Name" class="form-control" name="UserName" required />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-at fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Email</label>
+                    <input type="text" id="Email" class="form-control" name="Email" required />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <input type="submit" class="btn btn-primary" value="Sign In" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*Modal for sign up action *@
+<div id="SignUpModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form class="mx-1 mx-md-4" method="post">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example4c">Name</label>
+                    <input type="text" id="Name" class="form-control" name="UserName" required />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-at fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Email</label>
+                    <input type="text" id="Email" class="form-control" name="Email" required />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                   <i class="fa-solid fa-person-circle-question fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example3c">Role</label>
+                    <input type="text" id="Role" class="form-control" name="Role" required />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                <input type="submit" class="btn btn-primary btn-lg" value="Sign Up" asp-controller="Account" asp-action="SignUp" />
+            </div>
+
+        </form>
+    </div>
+</div>
+

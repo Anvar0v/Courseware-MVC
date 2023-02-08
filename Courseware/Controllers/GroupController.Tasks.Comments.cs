@@ -13,7 +13,7 @@ public partial class GroupController : Controller
         await _commentService.CreateCommentAsync(dtoModel);
         return Ok();
     }
-
+    //get action
     public async Task GetComments()
        => await _commentService.GetCommentsAsync();
 

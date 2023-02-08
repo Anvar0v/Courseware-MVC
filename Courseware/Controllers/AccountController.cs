@@ -3,7 +3,7 @@ using Courseware.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courseware.Controllers;
-public interface AccountController : Controller
+public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
 

@@ -1,2 +1,2 @@
 # Courseware-MVC
-Course management system for schools/universities.
+Course management system provides actions like creation of a course, giving tasks and so on. 
